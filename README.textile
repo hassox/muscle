@@ -1,0 +1,47 @@
+h1. Muscle
+
+A very simple library for parallelizing slow actions.  
+Built with api access in mind, where you need to access an external service which may take a while.
+
+Within web frameworks, using muscle you can setup your api/external requests and they will be fetched in the background.
+You are free to move on with rendering output while the action is executed in the background.  Muscle will only block when
+you ask for the result of an action that has not yet completed.
+
+For example:
+  
+<pre><code>
+  m = Muscle.new do |m|
+    m.action(:action_name) do
+      # some slow action
+      # the result of the block is returned as the value of the action
+    end
+    
+    m.action(:another, :timeout => 1.2) do
+      # some unreliable action.
+    end
+    
+    # Setup a special timeout handler for the second action
+    # by default timeouts are set to 5 seconds
+    m.on_timeout(:another) do
+      "Sorry but :action timed out"
+    end
+  end
+</code></pre>
+
+Actions start executing as soon as they're declared, but don't block until they're accessed.
+Since no timeout handler is setup on :action_name when accessed it will raise a Timeout::Error if it has timed out.
+
+<pre><code>
+  # Get the results of a single action
+  m[:action_name] #<-- will block for the result if not yet finished
+  
+  # Iterate through all actions in declared order
+  m.each do |result|
+    # process results
+  end
+</code></pre>
+
+
+== Copyright
+
+Copyright (c) 2009 Daniel Neighman. See LICENSE for details.

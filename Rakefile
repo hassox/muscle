@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "muscle"
-    gem.summary = %Q{TODO}
+    gem.summary = "Muscle is a simple parralellizer for slow actions"
     gem.email = "has.sox@gmail.com"
     gem.homepage = "http://github.com/hassox/muscle"
     gem.authors = ["Daniel Neighman"]
