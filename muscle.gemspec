@@ -16,9 +16,12 @@ Gem::Specification.new do |s|
     ".document",
      ".gitignore",
      "LICENSE",
+     "README.textile",
      "Rakefile",
      "VERSION",
+     "example/api_example.rb",
      "lib/muscle.rb",
+     "muscle.gemspec",
      "spec/muscle_spec.rb",
      "spec/spec_helper.rb"
   ]
