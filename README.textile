@@ -5,7 +5,7 @@ Built with api access in mind, where you need to access an external service whic
 
 Within web frameworks, using muscle you can setup your api/external requests and they will be fetched in the background.
 You are free to move on with rendering output while the action is executed in the background.  Muscle will only block when
-you ask for the result of an action that has not yet completed.
+you ask for the result of an action that has not yet completed.  This is not intended to replace a background queue system like rabbitmq or delayed-job.  The intention of muscle is that it's more for when you need to bring data in from an external source, rather than push data out.
 
 For example:
   
